@@ -34,44 +34,35 @@ Antes de começar, verifique se você tem as seguintes dependências instaladas:
 
 ## Instalação
 
-1. Clone o repositório:
+Clone o repositório:
 
-   ```bash
-   git clone https://github.com/usuario/repositorio.git
-   cd repositorio
+    git clone https://github.com/usuario/repositorio.git
+    cd repositorio  
 
-Instale as dependências:
 
-bash
+### Instale as dependências:
 
-bundle install
+    bundle install  
 
 Configure o banco de dados:
 
-bash
 
-rails db:create
-rails db:migrate
+    rails db:create
+    rails db:migrate
 
 (Opcional) Se estiver usando Docker, inicie os containers:
 
-bash
-
     docker-compose up
-
-
 
 ### Configuração do Redis e Sidekiq:
 
 Certifique-se de que o Redis esteja em execução. Se estiver usando Docker, ele será iniciado automaticamente com o Compose.
 
-Configuração do Sidekiq-Cron:
+### Configuração do Sidekiq-Cron:
 
-Edite o arquivo config/schedule.yml para definir seus jobs periódicos.
+#### Edite o arquivo config/schedule.yml para definir seus jobs periódicos.
 
 Exemplo de schedule.yml:
-
-    yaml
 
     # config/schedule.yml
     my_periodic_job:
@@ -81,19 +72,26 @@ Exemplo de schedule.yml:
         - "argument1"
         - "argument2"
 
-Configuração das Variáveis de Ambiente:
+### Configuração das Variáveis de Ambiente:
 
 Defina as variáveis de ambiente necessárias para sua aplicação no arquivo .env ou diretamente no ambiente.
 
-Uso
+    #.env
+    PG_DATABASE=sidekiq_example_DB
+    PG_USERNAME=user_exemple
+    PG_PASSWORD=password_exemple
+    PG_HOST=localhost
+    PG_PORT=5432
+
+    OTHER_ENV=example
+    REDIS_URL_SIDEKIQ=redis://redis:6379/1
+
 
 Iniciar o Servidor Rails:
 
-bash
-
     rails server
 
-Acessar a Interface do Sidekiq:
+## Acessar a Interface do Sidekiq:
 
 Se estiver usando a interface web do Sidekiq, você pode acessá-la em http://localhost:3000/sidekiq (ou a porta configurada).
 
@@ -118,13 +116,12 @@ Exemplo de Job:
 ruby
 
 # app/jobs/my_job.rb
-class MyJob
-  include Sidekiq::Worker
-
-  def perform(*args)
-    # Lógica do job
-  end
-end
+    class MyJob
+    include Sidekiq::Worker
+        def perform(*args)
+            # Lógica do job
+        end
+    end
 
 Agendamento de Jobs
 
