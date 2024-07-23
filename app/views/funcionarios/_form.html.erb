@@ -1,16 +1,27 @@
-
-<%= simple_form_for(@funcionario) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :nome %>
-    <%= f.input :email %>
-    <%= f.input :dataNascimento %>
-    <%= f.association :user %>
+<%= simple_form_for @funcionario do |f| %>
+ <div class="form-inputs">
+  <div class="row">
+    
+    <div class="col-md-6">
+     <%= f.input :nome %>
+    </div>
+    <div class="col-md-6">
+     <%= f.input :email %>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.input :dataNascimento, as: :date, input_html: { class: 'form-control' } %>
+        <% if f.object.errors[:dataNascimento].any? %>
+          <div class="error">
+            <%= f.object.errors[:dataNascimento].first %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <%= f.association :user, includ_blank: false%>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
   </div>
+  <%= f.button :submit, class:"btn btn-primary" %>
 <% end %>
