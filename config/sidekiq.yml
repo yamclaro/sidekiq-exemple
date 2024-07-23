@@ -1,0 +1,14 @@
+:concurrency: 5
+staging:
+  :concurrency: 5
+production:
+  :concurrency: 20
+:queues:
+  - default
+  - mailers
+  - low
+  - mailers
+
+:redis:
+  url: redis://localhost:6379/0
+  namespace: sidekiq

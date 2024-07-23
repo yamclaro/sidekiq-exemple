@@ -1,0 +1,7 @@
+scheduled_email_job:
+  cron: "0 9 * * *" # Executa todos os dias às 09:00
+  class: "ScheduledEmailJob"
+  args:
+    - <%= Time.now.iso8601 %>
+    - param1
+    - param2

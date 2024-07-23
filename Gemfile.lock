@@ -82,6 +82,7 @@ GEM
     brakeman (6.1.2)
       racc
     builder (3.3.0)
+    byebug (11.1.3)
     capybara (3.40.0)
       addressable
       matrix
@@ -112,6 +113,11 @@ GEM
       railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
+    et-orbi (1.2.11)
+      tzinfo
+    fugit (1.11.0)
+      et-orbi (~> 1, >= 1.2.11)
+      raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -175,6 +181,7 @@ GEM
     public_suffix (6.0.0)
     puma (6.4.2)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.8.0)
     rack (3.1.7)
     rack-session (2.0.0)
@@ -217,6 +224,8 @@ GEM
     rake (13.2.1)
     rdoc (6.7.0)
       psych (>= 4.0.0)
+    redis-client (0.22.2)
+      connection_pool
     regexp_parser (2.9.2)
     reline (0.5.9)
       io-console (~> 0.5)
@@ -262,6 +271,17 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shutup (0.1.2)
+    sidekiq (7.3.0)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      logger
+      rack (>= 2.2.4)
+      redis-client (>= 0.22.2)
+    sidekiq-cron (1.12.0)
+      fugit (~> 1.8)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6)
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -313,6 +333,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  byebug
   capybara
   cssbundling-rails
   debug
@@ -325,6 +346,9 @@ DEPENDENCIES
   rails (~> 7.2.0.beta3)
   rubocop-rails-omakase
   selenium-webdriver
+  shutup
+  sidekiq
+  sidekiq-cron
   simple_form
   sprockets-rails
   stimulus-rails
