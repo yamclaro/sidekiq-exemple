@@ -3,7 +3,7 @@ version: '3.8'
 services:
   redis:
     image: redis:latest
-    container_name: sidekiq-exemple-redis
+    container_name: sidekiq-example-redis
     ports:
       - "6379:6379"
     networks:
@@ -20,6 +20,15 @@ services:
       - .:/rails
     depends_on:
       - redis
+    networks:
+      - sidekiq-net
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    container_name: mailcatcher
+    ports:
+      - "1080:1080"  # Porta para acessar a interface web do Mailcatcher
+      - "1025:1025"  # Porta para enviar emails para o Mailcatcher
     networks:
       - sidekiq-net
 

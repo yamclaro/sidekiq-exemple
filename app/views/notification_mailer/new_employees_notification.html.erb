@@ -1,0 +1,38 @@
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    p {
+      color: #34495e;
+      line-height: 1.5;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background-color: #ecf0f1;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .note {
+      color: #7f8c8d;
+      font-style: italic;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+  <h4>Novos Professores</h>
+  <p>Informamos que os seguintes professores foram recentemente adicionados ao nosso sistema. Estamos felizes em recebê-los como parte da nossa equipe e acreditamos que eles contribuirão significativamente para o desenvolvimento educacional.</p>
+  <ul>
+    <% @employee_list.each do |employee| %>
+      <li><%= employee %></li>
+    <% end %>
+  </ul>
+  <p class="note">Por favor, certifique-se de dar-lhes as boas-vindas e fornecer-lhes o suporte necessário para se adaptarem ao nosso ambiente.</p>

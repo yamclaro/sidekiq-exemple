@@ -22,6 +22,7 @@ group :development, :test do
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
   gem "byebug"
+  gem "mailcatcher"
 end
 
 group :development do
